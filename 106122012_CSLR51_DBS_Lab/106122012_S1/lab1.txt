@@ -1,0 +1,238 @@
+select version(), current_date;
+mysql> select version(), current_date;
++-------------------------+--------------+
+| version()               | current_date |
++-------------------------+--------------+
+| 8.0.36-0ubuntu0.20.04.1 | 2024-07-18   |
++-------------------------+--------------+
+1 row in set (0.00 sec)
+
+
+mysql>  SELECT YEAR('2024/07/18') AS Year; 
++------+
+| Year |
++------+
+| 2024 |
++------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| Animal             |
+| COMP               |
+| COMPA              |
+| COMPANY            |
+| College            |
+| Company            |
+| Covid              |
+| DBLAB2             |
+| Exam               |
+| Institute          |
+| LAB                |
+| Lab1a              |
+| ORGANIZATION       |
+| Section            |
+| Voting             |
+| WEEK1              |
+| WeekSix            |
+| Work               |
+| company            |
+| db3                |
+| db6                |
+| dblab2             |
+| dblabII            |
+| dblabsec           |
+| dbm                |
+| employee           |
+| iman               |
+| information_schema |
+| lab1               |
+| lab1_db            |
+| market             |
+| mysampldb          |
+| mysampledb         |
+| mysql              |
+| performance_schema |
+| qone               |
+| rahul              |
+| shashank           |
+| sys                |
+| week11             |
+| week3              |
+| week5              |
+| week6              |
+| week7              |
+| week8              |
+| week9              |
+| week_six           |
+| weeksixx           |
++--------------------+
+48 rows in set (0.01 sec)
+
+mysql> USE lab1
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SHOW 
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> SHOW TABLES;
++----------------+
+| Tables_in_lab1 |
++----------------+
+| Staff          |
+| Staff_view     |
+| Student        |
+| Tutor          |
+| department     |
+| student        |
++----------------+
+6 rows in set (0.01 sec)
+
+mysql> CREATE DATABASE ameya;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> USE ameya;
+Database changed
+mysql> CREATE TABLE department
+    -> (
+    ->     ID int,
+    ->     SALARY int,
+    ->     NAME Varchar(20),
+    ->     JoinDate datetime 
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> SHOW tables
+    -> ;
++-----------------+
+| Tables_in_ameya |
++-----------------+
+| department      |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM department
+    -> ;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO department VALUES (1,2000,'ameya','2024-07-18');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM department;
++------+--------+-------+---------------------+
+| ID   | SALARY | NAME  | JoinDate            |
++------+--------+-------+---------------------+
+|    1 |   2000 | ameya | 2024-07-18 00:00:00 |
++------+--------+-------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT YEAR(JoinDate) FROM department;
++----------------+
+| YEAR(JoinDate) |
++----------------+
+|           2024 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT 20 ^ 3;
++--------+
+| 20 ^ 3 |
++--------+
+|     23 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT 3 ^ 3;
++-------+
+| 3 ^ 3 |
++-------+
+|     0 |
++-------+
+1 row in set (0.00 sec)
+
+mysql> SELECT 3 & 4;
++-------+
+| 3 & 4 |
++-------+
+|     0 |
++-------+
+1 row in set (0.00 sec)
+
+mysql> SELECT 4 & 4;
++-------+
+| 4 & 4 |
++-------+
+|     4 |
++-------+
+1 row in set (0.00 sec)
+
+mysql> SELECT FLOOR(4.7); SELECT CEIL(4.7);
++------------+
+| FLOOR(4.7) |
++------------+
+|          4 |
++------------+
+1 row in set (0.00 sec)
+
++-----------+
+| CEIL(4.7) |
++-----------+
+|         5 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> SELECT CURDATE();
++------------+
+| CURDATE()  |
++------------+
+| 2024-07-18 |
++------------+
+1 row in set (0.00 sec)
+mysql> SELECT NOW();
++---------------------+
+| NOW()               |
++---------------------+
+| 2024-07-18 16:17:59 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT TO_DAYS('2024-07-19') - TO_DAYS(current_date);
+ERROR 2013 (HY000): Lost connection to MySQL server during query
+No connection. Trying to reconnect...
+Connection id:    8
+Current database: ameya
+
++-----------------------------------------------+
+| TO_DAYS('2024-07-19') - TO_DAYS(current_date) |
++-----------------------------------------------+
+|                                             1 |
++-----------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT ADDTIME(current_date, ' 2:50:0.000000');
++-----------------------------------------+
+| ADDTIME(current_date, ' 2:50:0.000000') |
++-----------------------------------------+
+| 2024-07-18 02:50:00.000000              |
++-----------------------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> CREATE USER 'root'@'%' IDENTIFIED BY 'PASSWORD';
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> GRANT ALL PRIVILEGES ON ameya.* TO 'root'@'localhost' WITH GRANT OPTION;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> SELECT USER();
++----------------+
+| USER()         |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
